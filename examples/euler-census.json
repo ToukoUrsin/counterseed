@@ -1,0 +1,82 @@
+{
+  "format": "counterseed-experiment-v1",
+  "engineVersion": "1.0.0",
+  "startedAt": "2026-09-22T02:35:12.930Z",
+  "conjecture": {
+    "antecedent": "connected && even_degrees",
+    "consequent": "eulerian"
+  },
+  "universe": {
+    "minVertices": 1,
+    "maxVertices": 6,
+    "simple": true,
+    "undirected": true,
+    "labeled": true,
+    "loops": false
+  },
+  "enumeration": "vertices ascending, then edges ascending, then bitmask ascending",
+  "mode": "census",
+  "status": "bounded",
+  "complete": true,
+  "counts": {
+    "checked": 33867,
+    "eligible": 763,
+    "violations": 0,
+    "total": 33867
+  },
+  "perOrder": [
+    {
+      "n": 1,
+      "checked": 1,
+      "eligible": 1,
+      "violations": 0,
+      "total": 1,
+      "complete": true
+    },
+    {
+      "n": 2,
+      "checked": 2,
+      "eligible": 0,
+      "violations": 0,
+      "total": 2,
+      "complete": true
+    },
+    {
+      "n": 3,
+      "checked": 8,
+      "eligible": 1,
+      "violations": 0,
+      "total": 8,
+      "complete": true
+    },
+    {
+      "n": 4,
+      "checked": 64,
+      "eligible": 3,
+      "violations": 0,
+      "total": 64,
+      "complete": true
+    },
+    {
+      "n": 5,
+      "checked": 1024,
+      "eligible": 38,
+      "violations": 0,
+      "total": 1024,
+      "complete": true
+    },
+    {
+      "n": 6,
+      "checked": 32768,
+      "eligible": 720,
+      "violations": 0,
+      "total": 32768,
+      "complete": true
+    }
+  ],
+  "witness": null,
+  "visitedHash": "0b2678c5",
+  "hashAlgorithm": "FNV-1a-32 over n, mask low byte, mask high byte, premise, conclusion; noncryptographic",
+  "finishedAt": "2026-09-22T02:35:13.191Z",
+  "claim": "No counterexample exists in the fully enumerated declared universe. This is bounded evidence, not a proof for all finite graphs."
+}

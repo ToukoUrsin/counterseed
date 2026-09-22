@@ -1,0 +1,9 @@
+{
+  "name": "counterseed",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A finite graph laboratory that turns conjectures into reproducible counterexamples.",
+  "engines": { "node": ">=22" },
+  "scripts": { "start": "node server.mjs", "test": "node --test test/*.test.mjs", "verify": "node verify.mjs" }
+}

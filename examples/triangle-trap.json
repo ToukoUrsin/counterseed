@@ -1,0 +1,210 @@
+{
+  "format": "counterseed-experiment-v1",
+  "engineVersion": "1.0.0",
+  "startedAt": "2026-09-22T02:35:12.888Z",
+  "conjecture": {
+    "antecedent": "triangle_free",
+    "consequent": "bipartite"
+  },
+  "universe": {
+    "minVertices": 1,
+    "maxVertices": 6,
+    "simple": true,
+    "undirected": true,
+    "labeled": true,
+    "loops": false
+  },
+  "enumeration": "vertices ascending, then edges ascending, then bitmask ascending",
+  "mode": "first",
+  "status": "counterexample",
+  "complete": false,
+  "counts": {
+    "checked": 507,
+    "eligible": 368,
+    "violations": 1,
+    "total": 33867
+  },
+  "perOrder": [
+    {
+      "n": 1,
+      "checked": 1,
+      "eligible": 1,
+      "violations": 0,
+      "total": 1,
+      "complete": true
+    },
+    {
+      "n": 2,
+      "checked": 2,
+      "eligible": 2,
+      "violations": 0,
+      "total": 2,
+      "complete": true
+    },
+    {
+      "n": 3,
+      "checked": 8,
+      "eligible": 7,
+      "violations": 0,
+      "total": 8,
+      "complete": true
+    },
+    {
+      "n": 4,
+      "checked": 64,
+      "eligible": 41,
+      "violations": 0,
+      "total": 64,
+      "complete": true
+    },
+    {
+      "n": 5,
+      "checked": 432,
+      "eligible": 317,
+      "violations": 1,
+      "total": 1024,
+      "complete": false
+    }
+  ],
+  "witness": {
+    "n": 5,
+    "mask": 220,
+    "edges": [
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "properties": {
+      "connected": true,
+      "bipartite": false,
+      "triangle_free": true,
+      "acyclic": false,
+      "tree": false,
+      "regular": true,
+      "complete": false,
+      "even_degrees": true,
+      "no_isolates": true,
+      "eulerian": true,
+      "hamiltonian": true,
+      "traceable": true,
+      "bridgeless": true,
+      "no_cut_vertices": true,
+      "vertices": 5,
+      "edges": 5,
+      "components": 1,
+      "min_degree": 2,
+      "max_degree": 2,
+      "chromatic_number": 3,
+      "clique_number": 2,
+      "independence_number": 2,
+      "girth": 5,
+      "diameter": 2
+    },
+    "details": {
+      "components": [
+        [
+          0,
+          4,
+          1,
+          2,
+          3
+        ]
+      ],
+      "degrees": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "oddCycle": [
+        2,
+        3,
+        0,
+        4,
+        1
+      ],
+      "coloring": {
+        "number": 3,
+        "colors": [
+          0,
+          0,
+          1,
+          2,
+          1
+        ]
+      },
+      "bridges": [],
+      "cutVertices": [],
+      "eulerWalk": [
+        0,
+        3,
+        2,
+        1,
+        4,
+        0
+      ],
+      "hamiltonianCycle": [
+        0,
+        3,
+        2,
+        1,
+        4
+      ],
+      "hamiltonianPath": [
+        0,
+        3,
+        2,
+        1,
+        4
+      ]
+    },
+    "antecedent": {
+      "op": "property",
+      "value": true,
+      "name": "triangle_free",
+      "label": "Triangle-free"
+    },
+    "consequent": {
+      "op": "property",
+      "value": false,
+      "name": "bipartite",
+      "label": "Bipartite"
+    },
+    "explanation": [
+      {
+        "kind": "odd-cycle",
+        "title": "An odd cycle of length 5",
+        "body": "Alternate two colors around the highlighted cycle. The last edge joins vertices of the same color. No two-coloring can work.",
+        "vertices": [
+          2,
+          3,
+          0,
+          4,
+          1
+        ]
+      }
+    ]
+  },
+  "visitedHash": "3c6c1ad7",
+  "hashAlgorithm": "FNV-1a-32 over n, mask low byte, mask high byte, premise, conclusion; noncryptographic",
+  "finishedAt": "2026-09-22T02:35:12.909Z",
+  "claim": "A finite counterexample disproves this universal implication. Minimal by vertex count, then edge count, within the declared universe."
+}

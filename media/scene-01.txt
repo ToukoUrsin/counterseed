@@ -1,0 +1,1 @@
+A thousand examples can suggest a rule. One counterexample can change it. This is Counterseed: a graph laboratory for finding the beautiful exception. Instead of asking a chatbot whether a conjecture is true, we write a precise question, search a complete finite universe, and keep evidence that anyone can replay. Everything runs in the browser, without an account or an API key.

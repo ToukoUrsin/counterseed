@@ -1,0 +1,240 @@
+{
+  "format": "counterseed-experiment-v1",
+  "engineVersion": "1.0.0",
+  "startedAt": "2026-09-22T02:35:13.475Z",
+  "conjecture": {
+    "antecedent": "connected && min_degree >= 2",
+    "consequent": "bridgeless"
+  },
+  "universe": {
+    "minVertices": 1,
+    "maxVertices": 6,
+    "simple": true,
+    "undirected": true,
+    "labeled": true,
+    "loops": false
+  },
+  "enumeration": "vertices ascending, then edges ascending, then bitmask ascending",
+  "mode": "first",
+  "status": "counterexample",
+  "complete": false,
+  "counts": {
+    "checked": 12251,
+    "eligible": 429,
+    "violations": 1,
+    "total": 33867
+  },
+  "perOrder": [
+    {
+      "n": 1,
+      "checked": 1,
+      "eligible": 0,
+      "violations": 0,
+      "total": 1,
+      "complete": true
+    },
+    {
+      "n": 2,
+      "checked": 2,
+      "eligible": 0,
+      "violations": 0,
+      "total": 2,
+      "complete": true
+    },
+    {
+      "n": 3,
+      "checked": 8,
+      "eligible": 1,
+      "violations": 0,
+      "total": 8,
+      "complete": true
+    },
+    {
+      "n": 4,
+      "checked": 64,
+      "eligible": 10,
+      "violations": 0,
+      "total": 64,
+      "complete": true
+    },
+    {
+      "n": 5,
+      "checked": 1024,
+      "eligible": 253,
+      "violations": 0,
+      "total": 1024,
+      "complete": true
+    },
+    {
+      "n": 6,
+      "checked": 11152,
+      "eligible": 165,
+      "violations": 1,
+      "total": 32768,
+      "complete": false
+    }
+  ],
+  "witness": {
+    "n": 6,
+    "mask": 5907,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        1,
+        5
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        4
+      ],
+      [
+        3,
+        4
+      ]
+    ],
+    "properties": {
+      "connected": true,
+      "bipartite": false,
+      "triangle_free": false,
+      "acyclic": false,
+      "tree": false,
+      "regular": false,
+      "complete": false,
+      "even_degrees": false,
+      "no_isolates": true,
+      "eulerian": false,
+      "hamiltonian": false,
+      "traceable": true,
+      "bridgeless": false,
+      "no_cut_vertices": false,
+      "vertices": 6,
+      "edges": 7,
+      "components": 1,
+      "min_degree": 2,
+      "max_degree": 3,
+      "chromatic_number": 3,
+      "clique_number": 3,
+      "independence_number": 2,
+      "girth": 3,
+      "diameter": 3
+    },
+    "details": {
+      "components": [
+        [
+          0,
+          5,
+          2,
+          4,
+          3,
+          1
+        ]
+      ],
+      "degrees": [
+        3,
+        2,
+        3,
+        2,
+        2,
+        2
+      ],
+      "oddCycle": [
+        1,
+        0,
+        5
+      ],
+      "coloring": {
+        "number": 3,
+        "colors": [
+          0,
+          1,
+          1,
+          0,
+          2,
+          2
+        ]
+      },
+      "bridges": [
+        [
+          0,
+          2
+        ]
+      ],
+      "cutVertices": [
+        0,
+        2
+      ],
+      "eulerWalk": null,
+      "hamiltonianCycle": null,
+      "hamiltonianPath": [
+        1,
+        5,
+        0,
+        2,
+        3,
+        4
+      ]
+    },
+    "antecedent": {
+      "op": "and",
+      "value": true,
+      "left": {
+        "op": "property",
+        "value": true,
+        "name": "connected",
+        "label": "Connected"
+      },
+      "right": {
+        "op": ">=",
+        "value": true,
+        "left": {
+          "op": "property",
+          "value": 2,
+          "name": "min_degree",
+          "label": "Minimum degree"
+        },
+        "right": {
+          "op": "literal",
+          "value": 2
+        }
+      }
+    },
+    "consequent": {
+      "op": "property",
+      "value": false,
+      "name": "bridgeless",
+      "label": "No bridges"
+    },
+    "explanation": [
+      {
+        "kind": "bridge",
+        "title": "1 fragile connection",
+        "body": "Removing a highlighted bridge increases the number of connected components, even though local degrees may look sufficient.",
+        "edges": [
+          [
+            0,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "visitedHash": "1cefeaf6",
+  "hashAlgorithm": "FNV-1a-32 over n, mask low byte, mask high byte, premise, conclusion; noncryptographic",
+  "finishedAt": "2026-09-22T02:35:13.595Z",
+  "claim": "A finite counterexample disproves this universal implication. Minimal by vertex count, then edge count, within the declared universe."
+}

@@ -1,0 +1,8 @@
+node_modules/
+artifacts/
+.DS_Store
+.env*
+*.log
+media/*.mp3
+media/*.mp4
+media/raw/
