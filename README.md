@@ -50,6 +50,10 @@ Try these questions:
 | `connected && min_degree >= 2` | `bridgeless` | Two triangles joined by a bridge: 6 vertices, 7 edges |
 | `connected && even_degrees` | `eulerian` | No violation among all 33,867 graphs through 6 vertices; bounded evidence only |
 
+![A six-vertex witness shows the bridge between two triangles](media/02-bridge.png)
+
+![A completed census clearly distinguishes bounded evidence from a theorem](media/03-census.png)
+
 ## Evidence is not a theorem
 
 A concrete counterexample disproves the universal implication. Passing a finite census does **not** prove it for all graphs. The interface, export and verifier preserve that distinction, including cancelled and vacuous searches.
@@ -78,7 +82,7 @@ Hosted CI is not claimed to pass. The account's GitHub Actions execution was rep
 - Node.js standard library and built-in test runner; Git and GitHub Pages.
 - Original application, graph engine and independent reference implementation. No third-party runtime library, framework, private dataset, pretrained model or inference API.
 - **OpenAI Codex** assisted with concept development, interface, implementation, tests, documentation and demo preparation. The author remains responsible for the submission and its explanations.
-- Demo production uses FFmpeg and ElevenLabs stock narration, where present. Narration is synthetic, not a cloned personal voice. These services are not needed to run the product.
+- Demo production uses Python/Pillow, FFmpeg and ElevenLabs stock narration. Narration is synthetic, not a cloned personal voice. These services are not needed to run the product.
 - Mathematical definitions and standard algorithm background were checked against Princeton's [Algorithms, 4th edition: undirected graphs](https://algs4.cs.princeton.edu/41graph/), [bipartiteness](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/Bipartite.html) and [Eulerian cycle](https://algs4.cs.princeton.edu/code/javadoc/edu/princeton/cs/algs4/EulerianCycle.html) references. Their implementation code was not copied.
 
 ## Why this exists

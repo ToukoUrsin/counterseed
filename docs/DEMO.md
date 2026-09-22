@@ -20,3 +20,9 @@ All footage must show the working application. The graph, calculations, search a
 - The complete Euler census and bounded-evidence language, or Field notes with multiple actual experiments.
 
 Screenshots belong in `media/`; raw screencast frames and rendered MP4/MP3 files are ignored by Git. Add the final public video URL to the README after upload. The event requires 2–5 minutes and at least three screenshots.
+
+## Recorded walkthrough
+
+The final three-minute walkthrough uses frames captured from the working application, with stock synthetic narration. Recording chunks preserve their internal interaction order; idle time between separate captures is removed. `media/pacing.json` holds selected real frames under the relevant explanation. No graph state or interaction is synthesized. The subtitle text follows the narration; cue timing is approximate, based on word count.
+
+The renderer requires Python with Pillow, FFmpeg and FFprobe. With original captures in `media/raw/sceneN*/frames.json` and generated narration in `media/scene-NN.mp3`, run `python3 media/assemble.py`. Public source includes the script, pacing, narration, subtitle text and chapter list. Original recordings and media binaries remain outside Git. The checked screenshots are `01-counterexample.png`, `02-bridge.png` and `03-census.png`.

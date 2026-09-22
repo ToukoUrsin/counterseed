@@ -34,7 +34,7 @@ Classroom evaluation, larger bounds using canonical graph generation, richer wit
 
 ## Built With
 
-JavaScript; Web Workers; SVG; HTML; CSS; browser localStorage; Node.js; Git; GitHub Pages; OpenAI Codex (AI-assisted design, code, tests and documentation); FFmpeg (video production); ElevenLabs stock synthetic narration (demo only). No external dataset, inference API or third-party runtime library.
+JavaScript; Web Workers; SVG; HTML; CSS; browser localStorage; Node.js; Git; GitHub Pages; OpenAI Codex (AI-assisted design, code, tests and documentation); Python/Pillow and FFmpeg (video production); ElevenLabs stock synthetic narration (demo only). No external dataset, inference API or third-party runtime library.
 
 ## Originality and scope
 

@@ -1,0 +1,114 @@
+1
+00:00:00,500 --> 00:00:09,200
+A thousand examples can suggest a rule. One counterexample can change
+it. This is Counterseed: a graph laboratory for finding the beautiful
+exception.
+
+2
+00:00:09,200 --> 00:00:16,765
+Instead of asking a chatbot whether a conjecture is true, we write a
+precise question, search a complete finite universe,
+
+3
+00:00:16,765 --> 00:00:23,952
+and keep evidence that anyone can replay. Everything runs in the
+browser, without an account or an API key.
+
+4
+00:00:25,452 --> 00:00:34,769
+Here is a tempting conjecture: if a graph has no triangles, then it must
+be bipartite. Counterseed checks graphs in a declared order:
+
+5
+00:00:34,769 --> 00:00:41,655
+first by vertices, then by edges. It finds the smallest exception after
+five hundred and seven graphs:
+
+6
+00:00:41,655 --> 00:00:50,161
+a five-cycle. There are no triangles, but an odd cycle cannot be colored
+with just two colors. The premise is true.
+
+7
+00:00:50,161 --> 00:00:54,616
+The conclusion is false. One tiny graph breaks the universal claim.
+
+8
+00:00:56,116 --> 00:01:05,427
+The witness is not a picture pasted into a demo. Remove one edge and the
+actual graph changes. So do its chromatic number,
+
+9
+00:01:05,427 --> 00:01:12,308
+girth, degree sequence, and both sides of the implication. The cycle
+becomes a path, which is bipartite.
+
+10
+00:01:12,308 --> 00:01:18,785
+Restore the witness, drag the layout, or edit any vertex pair with the
+accessible adjacency controls.
+
+11
+00:01:18,785 --> 00:01:23,237
+Twenty-four exact properties let us inspect the structure behind the
+answer.
+
+12
+00:01:24,737 --> 00:01:34,009
+Now we can ask something different. Does a connected graph with at least
+two neighbors at every vertex have no bridges? The answer
+
+13
+00:01:34,009 --> 00:01:42,072
+is no. Counterseed finds two triangles joined by a single fragile
+connection. Remove that bridge and the graph splits apart.
+
+14
+00:01:42,072 --> 00:01:48,522
+This is a custom logical expression, not a hard-coded result. The safe
+property language supports AND,
+
+15
+00:01:48,522 --> 00:01:53,762
+OR, NOT, parentheses, and numerical comparisons, so students can build
+their own experiments.
+
+16
+00:01:55,262 --> 00:02:04,695
+Some conjectures survive. For connected graphs with even degrees, the
+Eulerian test constructs a walk that uses every edge exactly once and
+returns
+
+17
+00:02:04,695 --> 00:02:12,486
+to its starting point. Here we check all thirty-three thousand, eight
+hundred and sixty-seven labeled graphs through six vertices.
+
+18
+00:02:12,486 --> 00:02:21,919
+No counterexample appears. The interface says bounded evidence, not a
+theorem. Checking every small graph does not prove a statement about all
+graphs.
+
+19
+00:02:23,419 --> 00:02:33,929
+Every experiment leaves a paper trail. Field notes preserve the question
+and the finite universe. The downloadable record includes the search
+order,
+
+20
+00:02:33,929 --> 00:02:43,962
+counts, smallest witness, exact properties, and a reproducible
+fingerprint. A separate command-line verifier uses independently written
+graph algorithms to replay it.
+
+21
+00:02:43,962 --> 00:02:53,040
+Core properties were checked against independent oracles across the
+entire six-vertex universe. Counterseed is an original Open Invention
+project,
+
+22
+00:02:53,040 --> 00:02:58,295
+built with disclosed AI assistance. Good questions grow from small
+exceptions.
