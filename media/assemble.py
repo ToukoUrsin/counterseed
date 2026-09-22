@@ -34,7 +34,7 @@ def main():
   frames=manifest['frames'] if isinstance(manifest,dict) else manifest
   if not frames:raise ValueError(f'No real frames in scene {i}')
   def ftime(frame):
-   value=frame.get('timestamp',frame.get('at',frame.get('time')))
+   value=frame.get('timestamp',frame.get('at',frame.get('time',frame.get('t'))))
    if value is None:raise ValueError('Every frame needs its captured timestamp')
    return float(value)/1000 if float(value)>1e11 else float(value)
   times=[ftime(f) for f in frames]
@@ -42,7 +42,7 @@ def main():
   target=audio_len+1.5
   records=[]
   for index,frame in enumerate(frames):
-   name=frame.get('file',frame.get('path'));path=pathlib.Path(name)
+   name=frame.get('file',frame.get('path',frame.get('name')));path=pathlib.Path(name)
    if not path.is_absolute():path=scene/path
    if not path.exists():raise ValueError(f'Missing captured frame: {path}')
    delta=times[index+1]-times[index] if index+1<len(frames) else 1.0

@@ -32,6 +32,8 @@ There are no npm dependencies and nothing to install. `public/` is a self-contai
 
 ## A real laboratory
 
+![A real search finds the smallest triangle-free nonbipartite graph](media/01-counterexample.png)
+
 - **Build your own implication.** Twenty-four exact graph properties, Boolean logic, parentheses and numeric comparisons. Expressions are parsed into a typed syntax tree; no arbitrary code is executed.
 - **Search every small graph.** Enumerate all 33,867 labeled simple undirected graphs on one through six vertices. Stop at the first counterexample or continue for a complete census. The Web Worker reports progress and supports cancellation.
 - **Find the smallest witness.** Enumeration orders by vertex count, then edge count, then binary encoding. “Smallest” means those declared criteria, not an unstated aesthetic preference.
