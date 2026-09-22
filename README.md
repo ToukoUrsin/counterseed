@@ -8,6 +8,8 @@ Write `triangle_free ⇒ bipartite`. Counterseed searches every smaller simple g
 
 **[Open the live laboratory](https://toukoursin.github.io/counterseed/)** · [Demo script](docs/DEMO.md) · [Mathematical conventions](docs/METHOD.md)
 
+![The Counterseed laboratory: an editable implication beside a live graph](media/lab-overview.jpg)
+
 Original submission for **Global Innovation Build Challenge V2 — Open / General Technical Invention**. Built during the competition period in September 2026. This project is distinct from the author's other hackathon entries and is not being cross-submitted.
 
 ## Try it
