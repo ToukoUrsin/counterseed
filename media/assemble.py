@@ -92,7 +92,7 @@ def main():
  final_concat=ROOT/'renders'/'final.ffconcat';final_concat.write_text('\n'.join(f"file '{quote(p)}'" for p in parts)+'\n')
  (ROOT/'counterseed-demo.srt').write_text('\n'.join(subtitles))
  (ROOT/'CHAPTERS.txt').write_text('\n'.join(chapter_lines)+'\n')
- call(['ffmpeg','-y','-v','warning','-f','concat','-safe','0','-i',str(final_concat),'-i',str(ROOT/'counterseed-demo.srt'),'-map','0:v','-map','0:a','-map','1:0','-c','copy','-c:s','mov_text','-metadata:s:s:0','language=eng','-metadata','title=Counterseed — Find the beautiful exception','-metadata','comment=Actual application screencast. Stock synthetic narration. Bounded graph experiments, not unbounded theorem proofs.','-movflags','+faststart',str(ROOT/'counterseed-demo.mp4')])
+ call(['ffmpeg','-y','-v','warning','-f','concat','-safe','0','-i',str(final_concat),'-i',str(ROOT/'counterseed-demo.srt'),'-map','0:v','-map','0:a','-map','1:0','-c:v','copy','-c:a','aac','-af','aresample=async=1:first_pts=0','-b:a','192k','-c:s','mov_text','-metadata:s:s:0','language=eng','-metadata','title=Counterseed — Find the beautiful exception','-metadata','comment=Actual application screencast. Stock synthetic narration. Bounded graph experiments, not unbounded theorem proofs.','-movflags','+faststart',str(ROOT/'counterseed-demo.mp4')])
  print(json.dumps({'video':str(ROOT/'counterseed-demo.mp4'),'duration':duration(ROOT/'counterseed-demo.mp4'),'chapters':chapter_lines},indent=2))
 
 if __name__=='__main__':main()
