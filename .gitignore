@@ -6,3 +6,4 @@ artifacts/
 media/*.mp3
 media/*.mp4
 media/raw/
+media/renders/
