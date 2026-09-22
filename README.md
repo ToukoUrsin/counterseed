@@ -6,7 +6,7 @@ A thousand examples can suggest a rule. One counterexample can change it. Counte
 
 Write `triangle_free ⇒ bipartite`. Counterseed searches every smaller simple graph, finds a five-cycle, shows the odd cycle that prevents two-coloring, and lets you remove an edge to see exactly why the result changes.
 
-**[Open the live laboratory](https://toukoursin.github.io/counterseed/)** · [Demo script](docs/DEMO.md) · [Mathematical conventions](docs/METHOD.md)
+**[Open the live laboratory](https://toukoursin.github.io/counterseed/)** · [Recorded demo and English captions](https://github.com/ToukoUrsin/counterseed/releases/tag/demo-2026-09-21) · [Demo script](docs/DEMO.md) · [Mathematical conventions](docs/METHOD.md)
 
 ![The Counterseed laboratory: an editable implication beside a live graph](media/lab-overview.jpg)
 
