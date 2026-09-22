@@ -6,6 +6,7 @@ import {oracle} from './oracle.mjs';
 export function verify(certificate){
  if(certificate?.format!=='counterseed-experiment-v1'||certificate.engineVersion!=='1.0.0')throw new Error('Unknown evidence format or engine version.');
  if(certificate.enumeration!=='vertices ascending, then edges ascending, then bitmask ascending')throw new Error('Unsupported enumeration order.');
+ if(certificate.hashAlgorithm!=='FNV-1a-32 over n, mask low byte, mask high byte, premise, conclusion; noncryptographic')throw new Error('Incorrect fingerprint algorithm declaration.');
  const nmax=certificate.universe?.maxVertices;
  if(!Number.isInteger(nmax)||nmax<1||nmax>6||certificate.universe.minVertices!==1||certificate.universe.simple!==true||certificate.universe.undirected!==true||certificate.universe.labeled!==true||certificate.universe.loops!==false)throw new Error('Unsupported or modified graph universe.');
  if(!['first','census'].includes(certificate.mode))throw new Error('Unsupported experiment mode.');
@@ -45,7 +46,7 @@ export function verify(certificate){
   const bridges=[];let edgeBit=0;for(let i=0;i<first.n;i++)for(let j=i+1;j<first.n;j++,edgeBit++)if(first.mask&(1<<edgeBit))if(oracle(first.n,first.mask^(1<<edgeBit))('components')>get('components'))bridges.push([i,j]);if(JSON.stringify(bridges)!==JSON.stringify(d.bridges))throw new Error('Bridge certificate mismatch.');
   const cuts=[];for(let removed=0;removed<first.n;removed++){const keep=Array.from({length:first.n},(_,i)=>i).filter(i=>i!==removed);let mask=0,bit=0;for(let i=0;i<keep.length;i++)for(let j=i+1;j<keep.length;j++,bit++)if(isEdge(keep[i],keep[j]))mask|=1<<bit;if(oracle(first.n-1,mask)('components')>get('components'))cuts.push(removed);}if(JSON.stringify(cuts)!==JSON.stringify(d.cutVertices))throw new Error('Cut-vertex certificate mismatch.');
  }
- return {verified:true,checked,eligible,violations,smallestWitness:first,boundedOnly:!first,message:first?'Independent graph oracles reproduced the smallest counterexample.':'Independent graph oracles reproduced the complete finite census. This is not an unbounded theorem.'};
+ return {verified:true,checked,eligible,violations,smallestWitness:first,boundedOnly:!first,verifiedScope:'Universe, enumeration counts, smallest witness, properties, logic traces and structural certificates. Human explanation prose and timestamps are not attestations.',message:first?'Independent graph oracles reproduced the smallest counterexample.':'Independent graph oracles reproduced the complete finite census. This is not an unbounded theorem.'};
 }
 if(process.argv[1]===fileURLToPath(import.meta.url)){
  if(!process.argv[2]){console.error('Usage: node verify.mjs path/to/counterseed-evidence.json');process.exitCode=1;}
