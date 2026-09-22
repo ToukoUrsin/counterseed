@@ -8,6 +8,7 @@ relative frame durations. Never invent interaction frames. Extra narration time
 holds the last captured application frame; audio is not sped up.
 """
 import json, pathlib, subprocess, textwrap
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT=pathlib.Path(__file__).resolve().parent
 TITLES=["01  A LITTLE DOUBT","02  THE SMALLEST EXCEPTION","03  CHANGE ONE EDGE","04  A FRAGILE CONNECTION","05  EVIDENCE, NOT A THEOREM","06  BUILT TO BE CHECKED"]
@@ -19,8 +20,7 @@ def call(args):
  subprocess.run(args,check=True)
 
 def stamp(t):
- hours=int(t//3600);minutes=int(t%3600//60);seconds=int(t%60);millis=int(round((t-int(t))*1000))
- if millis==1000: seconds+=1;millis=0
+ total=int(round(t*1000));hours=total//3600000;minutes=total%3600000//60000;seconds=total%60000//1000;millis=total%1000
  return f'{hours:02}:{minutes:02}:{seconds:02},{millis:03}'
 
 def quote(path):return str(path).replace("'", "'\\''")
@@ -49,10 +49,14 @@ def main():
    records.extend([f"file '{quote(path)}'",f'duration {max(delta,0.001):.6f}'])
   records.append(f"file '{quote(path)}'")
   concat=ROOT/'renders'/f'scene-{i:02}.ffconcat';concat.write_text('\n'.join(records)+'\n')
-  label=ROOT/'renders'/f'title-{i:02}.txt';label.write_text(TITLES[i-1])
+  label=ROOT/'renders'/f'title-{i:02}.png'
+  bar=Image.new('RGB',(1920,64),'#252b27');draw=ImageDraw.Draw(bar)
+  font=ImageFont.truetype('/System/Library/Fonts/Monaco.ttf',20);small=ImageFont.truetype('/System/Library/Fonts/Monaco.ttf',16)
+  draw.text((40,18),TITLES[i-1],font=font,fill='#f0df68')
+  right='COUNTERSEED  /  GIBC V2';draw.text((1880-draw.textlength(right,font=small),21),right,font=small,fill='#c1c8b0');bar.save(label)
   rendered=ROOT/'renders'/f'scene-{i:02}.mp4';parts.append(rendered)
-  vf=f"scale=1920:980:force_original_aspect_ratio=decrease:flags=lanczos,pad=1920:1080:(ow-iw)/2:70:color=0xf5f4ed,setsar=1,tpad=stop_mode=clone:stop_duration={target:.3f},drawbox=x=0:y=0:w=iw:h=64:color=0x252b27:t=fill,drawtext=fontfile=/System/Library/Fonts/Monaco.ttf:textfile='{label}':fontcolor=0xf0df68:fontsize=20:x=40:y=23,drawtext=fontfile=/System/Library/Fonts/Monaco.ttf:text='COUNTERSEED  /  GIBC V2':fontcolor=0xc1c8b0:fontsize=16:x=w-tw-40:y=25"
-  call(['ffmpeg','-y','-v','warning','-f','concat','-safe','0','-i',str(concat),'-i',str(ROOT/f'scene-{i:02}.mp3'),'-vf',vf,'-af','adelay=500|500,apad','-t',f'{target:.3f}','-r','30','-c:v','libx264','-preset','medium','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-movflags','+faststart',str(rendered)])
+  vf=f"[0:v]scale=1920:980:force_original_aspect_ratio=decrease:flags=lanczos,pad=1920:1080:(ow-iw)/2:70:color=0xf5f4ed,setsar=1,tpad=stop_mode=clone:stop_duration={target:.3f}[footage];[footage][2:v]overlay=0:0:shortest=0[video]"
+  call(['ffmpeg','-y','-v','warning','-f','concat','-safe','0','-i',str(concat),'-i',str(ROOT/f'scene-{i:02}.mp3'),'-i',str(label),'-filter_complex',vf,'-map','[video]','-map','1:a','-af','adelay=500|500,apad','-t',f'{target:.3f}','-r','30','-c:v','libx264','-preset','medium','-crf','19','-pix_fmt','yuv420p','-c:a','aac','-b:a','192k','-movflags','+faststart',str(rendered)])
   text=(ROOT/f'scene-{i:02}.txt').read_text().strip();words=text.split();chunks=[];chunk=[]
   for word in words:
    chunk.append(word)
